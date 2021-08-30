@@ -1,19 +1,32 @@
-@react.component
-let make = (~name) => {
-  let (name, setName) = React.useState(_ => name)
-  let onChange = evt => {
-    ReactEvent.Form.preventDefault(evt)
-    let value = ReactEvent.Form.target(evt)["value"]
-    setName(_prev => value);
+type state = {name: string}
+
+type action =
+  | UpdateName(string)
+
+let reducer = (_state, action) =>
+  switch(action) {
+    | UpdateName(name) => {name: name}
   }
 
+@react.component
+let make = (~name) => {
+  let (state, dispatch) =
+    React.useReducer(
+      reducer,
+      {
+        name: name,
+      }
+    )
+
   <div>
-    <h3>{{"Hello, " ++ name ++ "!"}->React.string}</h3>
+    <h3>{{"Hello, " ++ state.name ++ "!"}->React.string}</h3>
     <hr />
     <form>
       <label htmlFor="name">
         {"Say hello to: "->React.string}
-        <input id="name" type_="text" value={{name}} onChange />
+        <input id="name" type_="text" value={{state.name}} onChange={
+          event => dispatch(UpdateName(Utils.eventTargetValue(event)))
+        }/>
       </label>
     </form>
   </div>;
