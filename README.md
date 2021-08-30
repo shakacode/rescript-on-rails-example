@@ -13,7 +13,7 @@
 foreman start -f Procfile.dev
 ```
 
-Visit the https://localhost:3000/hello_world.
+Visit Hello World page at https://localhost:3000/hello_world.
 
 ## Notes
 
