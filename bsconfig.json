@@ -1,0 +1,20 @@
+{
+  "name": "laila-chat-rescript",
+  "sources": [
+    {
+      "dir": "app/javascript",
+      "subdirs": true
+    }
+  ],
+  "package-specs": [
+    {
+      "module": "es6",
+      "in-source": true
+    }
+  ],
+  "suffix": ".bs.js",
+  "bs-dependencies": [
+    "@rescript/react"
+  ],
+  "reason": { "react-jsx": 3 }
+}
