@@ -9,7 +9,7 @@ let reducer = (_state, action) =>
   }
 
 @react.component
-let make = (~name) => {
+let default = (~name) => {
   let (state, dispatch) =
     React.useReducer(
       reducer,
@@ -31,3 +31,5 @@ let make = (~name) => {
     </form>
   </div>;
 }
+
+
