@@ -1,5 +1,5 @@
 {
-  "name": "laila-chat-rescript",
+  "name": "rescript-on-rails-example",
   "sources": [
     {
       "dir": "app/javascript",
