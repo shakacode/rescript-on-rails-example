@@ -8,6 +8,11 @@ let reducer = (_state, action) =>
     | UpdateName(name) => {name: name}
   }
 
+let eventTargetValue = event => {
+  ReactEvent.Form.preventDefault(event)
+  ReactEvent.Form.target(event)["value"]
+}
+
 @react.component
 let default = (~name) => {
   let (state, dispatch) =
@@ -25,7 +30,7 @@ let default = (~name) => {
       <label htmlFor="name">
         {"Say hello to: "->React.string}
         <input id="name" type_="text" value={{state.name}} onChange={
-          event => dispatch(UpdateName(Utils.eventTargetValue(event)))
+          event => dispatch(UpdateName(eventTargetValue(event)))
         }/>
       </label>
     </form>
